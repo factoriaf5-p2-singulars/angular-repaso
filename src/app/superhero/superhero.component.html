@@ -1,0 +1,11 @@
+<!-- lista de superheroes -->
+@for(superhero of superheroes; track superhero.id){
+<div>
+  <img [src]="superhero.images.xs" alt={{superhero.name}}>
+  <h2>{{superhero.name}}</h2>
+  <button [routerLink]="['/superhero',superhero.id]">View Detail</button>
+</div>
+}
+<!-- buscador de superheroes -->
+<!-- formulario -->
+<!-- detalle -->
