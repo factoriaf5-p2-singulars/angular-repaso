@@ -1,9 +1,6 @@
-<form #superhero [formGroup]="superheroForm" (ngSubmit)="onSubmit()">
-  <input type="hidden" formControlName="id">
-  <input type="text" formControlName="name" >
-  <input type="text" formControlName="image" >
-  <button type="submit">Submit</button>
-</form>
+<app-form [superheroForm]="superheroForm"
+         (formSent)="onSubmit($event)">
+        </app-form>
 <!-- lista de superheroes -->
 @for(superhero of superheroes; track superhero.id){
 <div>

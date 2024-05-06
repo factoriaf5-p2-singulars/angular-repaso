@@ -1,0 +1,6 @@
+<form #superhero [formGroup]="superheroForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="id">
+  <input type="text" formControlName="name" >
+  <input type="text" formControlName="images" >
+  <button type="submit">Submit</button>
+</form>

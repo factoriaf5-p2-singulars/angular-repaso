@@ -4,12 +4,13 @@ import { Superhero } from '../shared/models/superhero';
 import { RouterLink } from '@angular/router';
 import { SuperheroService } from './services/superhero.service';
 import { FormBuilder, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from "./components/form/form.component";
 @Component({
-  selector: 'app-superhero',
-  standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
-  templateUrl: './superhero.component.html',
-  styleUrl: './superhero.component.scss'
+    selector: 'app-superhero',
+    standalone: true,
+    templateUrl: './superhero.component.html',
+    styleUrl: './superhero.component.scss',
+    imports: [RouterLink, ReactiveFormsModule, FormComponent]
 })
 export class SuperheroComponent implements OnInit {
   superheroService = inject(SuperheroService)
@@ -17,14 +18,8 @@ export class SuperheroComponent implements OnInit {
   superheroForm!: FormGroup;
 
   constructor(private fb: FormBuilder) { }
-  onSubmit() {
-    const superhero: Partial<Superhero> = {
-      id: this.superheroForm.controls['id'].value,
-      name: this.superheroForm.controls['name'].value,
-      images: {
-        xs: this.superheroForm.controls['images'].value
-      }
-    }
+  onSubmit(superhero:Partial<Superhero>) {
+
     this.superheroService.createSuperhero(superhero);
     console.log(this.superheroes);
 
