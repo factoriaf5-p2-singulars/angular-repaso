@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import data from '../../../data/data.json';
+import { Superhero } from '../../shared/models/superhero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuperheroService {
 
-  constructor() { }
+  superhero;
+  constructor() {
+    this.superhero = [...data];
+  }
 
   getAllSuperheroes(){
-    return data;
+    return this.superhero;
   }
   getOneSuperhero(id:number){
     const superhero = this.getAllSuperheroes().find(
@@ -24,5 +28,8 @@ export class SuperheroService {
         return null;
       }
 
+  }
+  createSuperhero(superhero:any){
+    this.superhero.push(superhero);
   }
 }
